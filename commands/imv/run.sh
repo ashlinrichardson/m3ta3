@@ -1,2 +1,2 @@
 make
-./imv.exe rgbn.bin
+./imv.exe ../../data/rgbn.bin

@@ -1,6 +1,10 @@
+#include<vector>
 #include<string>
 #include<sstream>
+#include<iostream>
+#include<fstream>
 #include"ansicolor.h"
+using namespace std;
 /*convert char to string: single character: interpret whitspace as space character */
 string chartos(char s){
   string ret("");
@@ -162,5 +166,32 @@ vector<string> parseHeaderFile(string hfn, long int & NRow, long int & NCol, lon
     }
   }
   return bandNames;
+}
+
+void writeHeader(const char * filename, int NRows, int NCols, int NBand){
+  time_t rawtime;
+  struct tm * timeinfo;
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+  FILE * f = fopen(filename, "w");
+  if(!f){
+    printf("Error: could not open file %s\n", filename);
+    exit(1);
+  }
+  int datatype = 4;
+  fprintf(f, "ENVI\n");
+  fprintf(f, "description = {%s}\n",strip(string(asctime(timeinfo))).c_str());
+  fprintf(f, "samples = %d\n", NCols);
+  fprintf(f, "lines   = %d\n", NRows);
+  fprintf(f, "bands   = %d\n", NBand);
+  fprintf(f, "header offset = 0\n");
+  fprintf(f, "file type = ENVI Standard\n");
+  fprintf(f, "data type = %d\n",datatype);
+  fprintf(f, "interleave = bsq\n");
+  fprintf(f, "sensor type = Unknown\n");
+  fprintf(f, "byte order = 0\n");
+  fprintf(f, "wavelength units = Unknown\n");
+  fclose(f);
+  printf("w %s\n",filename);
 }
 
