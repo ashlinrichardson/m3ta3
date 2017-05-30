@@ -65,9 +65,9 @@ long int getFileSize(std::string  fn){
   return(len);
 }
 
-bool exists( string fn){
+bool exists(string fn){
   if(getFileSize(fn) > 0){
-    printf("%sFound file %s%s\n", KGRN, KRED, fn.c_str());
+    printf("%sFound file %s%s\n%s", KGRN, KRED, fn.c_str(), KNRM);
     return true;
   }
   return false;
@@ -143,10 +143,10 @@ vector<string> parseHeaderFile(string hfn, long int & NRow, long int & NCol, lon
     vector<string>::iterator it;
     for(it=lines.begin(); it!=lines.end(); it++){
       string sss(*it);
-      vector<string> splitLine( split( sss, '='));
+      vector<string> splitLine(split(sss, '='));
       if(splitLine.size()==2){
         if(strncmp(strip(splitLine[0]).c_str(), "samples", 7) == 0){
-          NCol= atoi(strip(splitLine[1]).c_str());
+          NCol = atoi(strip(splitLine[1]).c_str());
         }
         if(strncmp(strip(splitLine[0]).c_str(), "lines", 5) == 0){
           NRow = atoi(strip(splitLine[1]).c_str());

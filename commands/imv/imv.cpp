@@ -17,7 +17,7 @@ int main(int argc, char * argv[]){
 
 	char * infile = argv[1];
 	long int NRow, NCol, NBand; 
-  parseHeaderFile(string(infile), NRow, NCol, NBand);
+  parseHeaderFile(getHeaderFileName(string(infile)), NRow, NCol, NBand);
 
   printf(" infile: %s nrow %ld ncol %ld nband %ld\n", infile, NRow, NCol, NBand);
 	printf(" getFileSize %ld expected %ld\n", getFileSize(infile), NRow*NCol*NBand*sizeof(float));
