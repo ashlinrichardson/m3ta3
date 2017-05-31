@@ -85,7 +85,7 @@ vector<string> split(string s, char delim, long int i){
   if(N == 0) return ret;
   istringstream iss(s);
   string token;
-  while(getline(iss,token)){
+  while(getline(iss, token)){
     ret.push_back(token);
   }
   return ret;
@@ -158,7 +158,7 @@ vector<string> parseHeaderFile(string hfn, long int & NRow, long int & NCol, lon
         if(strncmp(strip(splitLine[0]).c_str(), "bands", 5)== 0){
           NBand = atoi(strip(splitLine[1]).c_str());
         }
-        if(strncmp(strip(splitLine[0]).c_str(), "band names", 10) == 0){ //parse the band names. Apply as ARRAY members. 
+        if(strncmp(strip(splitLine[0]).c_str(), "band names", 10) == 0){
           string bandNameList(trim(trim(strip(splitLine[1]),'{'),'}'));
           bandNames = split(bandNameList, ',');
         }

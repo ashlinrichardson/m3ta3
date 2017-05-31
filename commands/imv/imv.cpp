@@ -6,31 +6,31 @@
 
 int main(int argc, char * argv[]){
   if(sizeof(float) != 4){
-    printf("Error: sizeof(float) != 4\n"); 
+    printf("Error: sizeof(float) != 4\n");
     exit(1);
   }
 
 	if(argc < 2){
 		printf("imv.cpp: [infile]\n"); // [nrow] [ncol] [nb]\n");
-    exit(1); 
+    exit(1);
 	}
 
 	char * infile = argv[1];
-	long int NRow, NCol, NBand; 
+	long int NRow, NCol, NBand;
   parseHeaderFile(getHeaderFileName(string(infile)), NRow, NCol, NBand);
 
   printf(" infile: %s nrow %ld ncol %ld nband %ld\n", infile, NRow, NCol, NBand);
 	printf(" getFileSize %ld expected %ld\n", getFileSize(infile), NRow*NCol*NBand*sizeof(float));
-  
+
   FILE * f = fopen(infile, "rb");
 	SA<float> dat(NRow * NCol * NBand);
 	long int nread = fread(&dat[0], sizeof(float), NRow * NCol * NBand, f);
 	if(nread != NRow * NCol * NBand){
-    printf("Error (imv.cpp): number of elements read (%d) different than expected (%d)\n", nread, NRow*NCol*NBand); 
+    printf("Error (imv.cpp): number of elements read (%d) different than expected (%d)\n", nread, NRow*NCol*NBand);
     exit(1);
   }
 	fclose(f);
-	
+
   myImg a;
 	a.initFrom(&dat, NRow, NCol, NBand);
 	zprManager * myManager = zprManager::Instance(argc,argv);
