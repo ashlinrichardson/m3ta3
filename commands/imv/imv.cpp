@@ -9,16 +9,13 @@ int main(int argc, char * argv[]){
     printf("Error: sizeof(float) != 4\n");
     exit(1);
   }
-
 	if(argc < 2){
-		printf("imv.cpp: [infile]\n"); // [nrow] [ncol] [nb]\n");
+		printf("imv.cpp: [infile]\n");
     exit(1);
 	}
-
 	char * infile = argv[1];
 	long int NRow, NCol, NBand;
   parseHeaderFile(getHeaderFileName(string(infile)), NRow, NCol, NBand);
-
   printf(" infile: %s nrow %ld ncol %ld nband %ld\n", infile, NRow, NCol, NBand);
 	printf(" getFileSize %ld expected %ld\n", getFileSize(infile), NRow*NCol*NBand*sizeof(float));
 
