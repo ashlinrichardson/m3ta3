@@ -29,8 +29,22 @@ int main(int argc, char * argv[]){
   }
   fclose(f);
 
+
   myImg a;
-  a.initFrom(&dat, NRow, NCol, NBand);
+  if(NBand ==1){
+    SA<float> dat2(NRow* NCol * 3);
+    int i, j, k; 
+    k=0;
+    for(i=0; i<3; i++){
+      for(j=0; j<NRow*NCol; j++){
+        dat2[k++] = dat[j];
+      }
+    }
+    a.initFrom(&dat2, NRow, NCol, 3);
+  }
+  else{
+    a.initFrom(&dat, NRow, NCol, NBand);
+  }
   zprManager * myManager = zprManager::Instance(argc,argv);
   zprInstance * myZpr = myManager->newZprInstance(NRow, NCol,NBand);
   glImage * myImage = new glImage(myZpr, &a);
