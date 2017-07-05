@@ -1,10 +1,12 @@
-/* m3ta3: reimagination of a (late 2011, early 2012) personal, primordial visualization library that inspired further developments at UVic, CFS and elsewhere.. */
+/* m3ta3: reimagination of a (late 2011, early 2012) personal, primordial visualization library
+that inspired further developments at UVic, CFS and elsewhere.. */
+
 #include "../../glut2/newzpr.h"
 #include<fstream>
 #include<iostream>
 #include"util.h"
 
-int main(int argc, char * argv[]){
+int main(int argc, char ** argv){
   if(sizeof(float) != 4){
     printf("Error: sizeof(float) != 4\n");
     exit(1);
@@ -32,7 +34,7 @@ int main(int argc, char * argv[]){
 
   myImg a;
   if(NBand ==1){
-    SA<float> dat2(NRow* NCol * 3);
+    SA<float> dat2(NRow * NCol * 3);
     int i, j, k; 
     k=0;
     for(i=0; i<3; i++){
