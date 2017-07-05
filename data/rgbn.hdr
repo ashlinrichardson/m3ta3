@@ -8,5 +8,5 @@ file type = ENVI Standard
 data type = 4
 interleave = bsq
 byte order = 0
-map info = {UTM, 1, 1, 311872, 5096432.8, 0.399999999999889, 0.399999999996634, 18, North,North America 1983}
+map info = {UTM, 1, 1, 311872, 5096432.8, 0.399999999999889, 0.399999999996634, 18, North, North America 1983}
 band names = {red, green, blue, near-infrared}
