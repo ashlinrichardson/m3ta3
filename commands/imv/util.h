@@ -57,7 +57,7 @@ string trim(string s, char a){
   return ret;
 }
 
-long int getFileSize(std::string  fn){
+long int getFileSize(std::string fn){
   ifstream i;
   i.open(fn.c_str(), ios::binary);
   if(!i.is_open()){
@@ -102,7 +102,8 @@ vector<string> split(string s, char delim){
   istringstream iss(s); string token;
   while(getline(iss,token,delim)){
     ret.push_back(token);
-  }return ret;
+  }
+  return ret;
 }
 
 vector<string> split(string s){
@@ -129,9 +130,11 @@ string getHeaderFileName( string fn){
   string hfn2((gfn.substr(0, gfn.size()-3)) + string("hdr"));
   if(exists(hfn)){
     return hfn;
-  }else if(exists(hfn2)){
+  }
+  else if(exists(hfn2)){
     return hfn2;
-  }else{
+  }
+  else{
     printf("%sError: could not find header file [%s] or [%s]\n", KRED, hfn.c_str(), hfn2.c_str());
     return string("");
   }
@@ -143,7 +146,7 @@ vector<string> parseHeaderFile(string hfn, long int & NRow, long int & NCol, lon
     printf("%sError: couldn't find header file\n", KRED);
   }
   else{
-    vector<string> lines =  readLines(hfn);
+    vector<string> lines = readLines(hfn);
     vector<string>::iterator it;
     for(it=lines.begin(); it!=lines.end(); it++){
       string sss(*it);
@@ -182,8 +185,8 @@ void writeHeader(const char * filename, int NRows, int NCols, int NBand){
   fprintf(f, "ENVI\n");
   fprintf(f, "description = {%s}\n",strip(string(asctime(timeinfo))).c_str());
   fprintf(f, "samples = %d\n", NCols);
-  fprintf(f, "lines   = %d\n", NRows);
-  fprintf(f, "bands   = %d\n", NBand);
+  fprintf(f, "lines = %d\n", NRows);
+  fprintf(f, "bands = %d\n", NBand);
   fprintf(f, "header offset = 0\n");
   fprintf(f, "file type = ENVI Standard\n");
   fprintf(f, "data type = %d\n",datatype);
@@ -194,4 +197,3 @@ void writeHeader(const char * filename, int NRows, int NCols, int NBand){
   fclose(f);
   printf("w %s\n",filename);
 }
-
