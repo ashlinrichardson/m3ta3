@@ -32,7 +32,7 @@ zprManager * zprManager::Instance(int argc, char *argv[]){
 
 void zprManager::mark(){
   int i;
-  for(i=0; i<this->nextZprInstanceID; i++){
+  for(i = 0; i < this->nextZprInstanceID; i++){
   }
 }
 
@@ -40,7 +40,7 @@ void zprInstance::mark(){
   refreshflag = true;
   std::vector<glPlottable *>::iterator it;
   int i=0;
-  for(it = myGraphics.begin(); it!=myGraphics.end(); it++){
+  for(it = myGraphics.begin(); it != myGraphics.end(); it++){
   }
 }
 
@@ -262,7 +262,7 @@ void zprInstance::getrgb(int & r, int & g, int & b){
 
 void zprInstance::processString(){
 
-  char strSleep[]="sleep";
+  char strSleep[] = "sleep";
   int i = 0;
   if(console_string[i] == '\0'){
     isPaused = !isPaused;
@@ -277,7 +277,7 @@ void zprInstance::processString(){
   strcpy(&s[0], console_string);
   int r,g,b, tk;
   int ndim = NBand;
-  if(strcmpz(&s[0],&strSleep[0])){
+  if(strcmpz(&s[0], &strSleep[0])){
     int st = atoi(&s[5]);
     if(st < 1){
       return;
@@ -293,7 +293,7 @@ void zprInstance::processString(){
 
     case 'c':
     printf("resetView();\n");
-    refreshflag=true;
+    refreshflag = true;
     mark();
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -306,28 +306,26 @@ void zprInstance::processString(){
     break;
 
     case 'r':
-    if( (i<1) || (i>ndim)) break;
+    if(i < 1 || i > ndim) break;
     getrgb( r,g,b);
-    setrgb( i-1, g, b);
+    setrgb(i - 1, g, b);
     break;
     case 'g':
     if( (i<1) || (i>ndim)) break;
-    getrgb( r,g,b);
-    setrgb( r, i-1, b);
+    getrgb(r, g, b);
+    setrgb(r, i - 1, b);
     break;
     case 'b':
-    if( (i<1) || (i>ndim)) break;
-    getrgb( r,g,b);
-    setrgb( r, g, i-1);
+    if(i < 1 || i > ndim) break;
+    getrgb(r, g, b);
+    setrgb(r, g, i - 1);
     break;
 
     case 'p':
-    getrgb(r,g,b);
-    printf("r band %d g band %d b band %d\n",r+1, g+1, b+1);
+    getrgb(r, g, b);
+    printf("r band %d g band %d b band %d\n", r + 1, g + 1, b + 1);
 
     break;
-    // case 't': printf("Printout parameters.\n");
-    // break;
     default:
     break;
   }
