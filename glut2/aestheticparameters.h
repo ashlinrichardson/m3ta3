@@ -1,4 +1,5 @@
-/* m3ta3: reimagination of a (late 2011, early 2012) personal, primordial visualization library that inspired further developments at UVic, CFS and elsewhere.. */
+/* m3ta3: reimagination of a (late 2011, early 2012) personal, primordial visualization library
+that inspired further developments at UVic, CFS and elsewhere.. */
 
 #pragma once
 #ifndef AESTHETICPARAMETERS_H
