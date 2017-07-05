@@ -23,10 +23,10 @@ using namespace std;
 			void initSameSize( myImg * other){
 				NRow = other->NRow; NCol =other->NCol; NBand = other->NBand;
 				dat.init(NRow*NCol*NBand); int nb = other->NBand;
-				float_buffers = new SA< SA<float> * >( (MYINT) nb );
+				float_buffers = new SA< SA<float> * >( (my_int) nb );
 				printf("\n");  int i;
 				for(i=0; i<nb; i++){
-					SA<float> * newB = new SA<float>( (MYINT) 0);
+					SA<float> * newB = new SA<float>( (my_int) 0);
 					newB->mySize = NRow*NCol;
 					newB->sizeI = NRow; 
 					newB->sizeJ = NCol; 
@@ -45,10 +45,10 @@ using namespace std;
 				for(i=0; i<other->size(); i++){
 					dat[i] = (*other)[i];
 				}
-				float_buffers = new SA< SA<float> * >( (MYINT) nb );
+				float_buffers = new SA< SA<float> * >( (my_int) nb );
 				printf("\n"); 
 				for(i=0; i<nb; i++){
-					SA<float> * newB = new SA<float>((MYINT) 0);
+					SA<float> * newB = new SA<float>((my_int) 0);
 					newB->mySize = NRow*NCol;
 					newB->sizeI = NRow; 
 					newB->sizeJ = NCol; 
@@ -92,6 +92,6 @@ using namespace std;
 			void scaleband( SA<float> * buf);
 			void printAsciiCSV(char * ASCIIFILE);
 		public:
-			inline float & operator[](MYINT subscript ){return dat[subscript];}	
+			inline float & operator[](my_int subscript ){return dat[subscript];}	
 	};
 #endif

@@ -15,10 +15,10 @@
 			
 			int ci=0; int i,j;
 
-			float_buffers = new SA< SA<float> * >( (MYINT) nb );
+			float_buffers = new SA< SA<float> * >( (my_int) nb );
 			printf("\n"); 
 			for(i=0; i<nb; i++){
-				SA<float> * newB = new SA<float>( (MYINT) 0);
+				SA<float> * newB = new SA<float>( (my_int) 0);
 				newB->mySize = NRow*NCol;
 				newB->sizeI = NRow; 
 				newB->sizeJ = NCol; 
