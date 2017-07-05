@@ -5,7 +5,8 @@ that inspired further developments at UVic, CFS and elsewhere.. */
 #ifndef AESTHETICPARAMETERS_H
 #define AESTHETCPARAMETERS_H
 
-#define DEBUGMODE 0   //put this around COUT statements (to suppress output).
+#define DEBUGMODE 0 
+
 static float ARROWHEAD_WIDTH = 0.175;
 static float ARROWHEAD_LENGTH = 0.25;
 
