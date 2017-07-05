@@ -6,6 +6,14 @@
 #include <iostream>
 using namespace std;
 
+void GLERROR(){
+  GLenum code = glGetError();
+  while(code != GL_NO_ERROR){
+    printf("%s\n",(char *) gluErrorString(code));
+    code = glGetError();
+  }
+}
+
 void glImage::drawMeUnHide(){
   hideMe = false;
   Update = true;
