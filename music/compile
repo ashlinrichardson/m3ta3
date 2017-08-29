@@ -1,0 +1,2 @@
+make;
+g++ -w playsong.cpp  -framework CoreAudio -framework AudioToolbox -framework AudioUnit -framework Carbon  -lportaudio -laudiodecoder -L./ -o playsong; 
